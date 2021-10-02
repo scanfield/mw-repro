@@ -15,9 +15,8 @@ You might have to adjust the commands below, but they work for me.
 `gcloud projects create --name="MW Repro"`
 
 #### set it in your config
-`gcloud config set project $PROJECT
-gcloud config set compute/zone us-central1-c
-`
+`gcloud config set project $PROJECT`
+`gcloud config set compute/zone us-central1-c`
 
 #### At this point I had to go into the UI to enable billing / enable the API.
 
