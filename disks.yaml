@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mw-pv
+spec:
+  storageClassName: "mw-sc"
+  capacity:
+    storage: 100Gi
+  volumeMode: Block
+  accessModes:
+    - ReadWriteMany
+  claimRef:
+    namespace: default
+    name: mw-pvc
+  gcePersistentDisk:
+    pdName: mw-disk-0
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mw-pvc
+spec:
+  storageClassName: "mw-sc"
+  accessModes:
+    - ReadWriteMany
+  volumeMode: Block
+  resources:
+    requests:
+      storage: 100Gi

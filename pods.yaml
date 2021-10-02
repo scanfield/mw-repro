@@ -1,0 +1,28 @@
+apiVersion: "apps/v1"
+kind: "Deployment"
+metadata:
+  name: "nginx-1"
+  namespace: "default"
+  labels:
+    app: "nginx-1"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "nginx-1"
+  template:
+    metadata:
+      labels:
+        app: "nginx-1"
+    spec:
+      volumes:
+      - name: mw-volume
+        persistentVolumeClaim:
+          claimName: mw-pvc
+      containers:
+      - name: "nginx-1"
+        image: "nginx:latest"
+        volumeDevices:
+        - name: mw-volume
+          devicePath: /mw/block
+
